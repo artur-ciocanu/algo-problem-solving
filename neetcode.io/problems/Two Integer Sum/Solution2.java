@@ -1,21 +1,29 @@
-// Key insight is to use a hashmap to store the difference between the target 
-// and the current element.
-// If we x and y then target - x = y, hence we can use the hashmap to retrieve
-// the right index.
+// Similar to Solution1, we want to use a two pointer technique to solve this problem.
+// The key insight is that we can use the fact that the input array is sorted to our advantage.
+// If the sum of the two numbers is too big, we need to move the right pointer to the left.
+// If the sum of the two numbers is too small, we need to move the left pointer to the right.
+
+// With this insight the solution is very simple and elegant. We just need to 
+// keep moving the pointers aka indexes until we find the two numbers that sum to the target.
 class Solution2 {
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
+    public int[] twoSum(int[] numbers, int target) {
+        int left = 0;
+        int right = numbers.length - 1;
 
-        for (int i = 0; i < nums.length; i++) {
-            int diff = target - nums[i];
+        while (left < right) {
+            int sum = numbers[left] + numbers[right];
 
-            if (map.containsKey(diff)) {
-                return new int[] { map.get(diff), i };
+            // It is a sorted array, so if sum is too big, we need to move a pointer to the left
+            if (sum > target) {
+                right--;
+            // It is a sorted array, so if sum is too small, we need to move a pointer to the right    
+            } else if (sum < target) {
+                left++;
+            } else {
+                return new int[] {left + 1, right + 1};
             }
-
-            map.put(nums[i], i);
         }
-
-        return new int[] {};
+        
+        return new int[0];
     }
 }

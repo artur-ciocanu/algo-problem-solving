@@ -1,13 +1,12 @@
 // This is a pretty naive approach
 // The complexity of the solution is O(n^2)
-// There is no space complexity since we are not using any extra space
+// Even if we iterate from j to i, the complexity is still O(n^2)
 class Solution1 {
-    public int[] twoSum(int[] nums, int target) {
-        // Brute force approach
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] + nums[j] == target) {
-                    return new int[] {i, j};
+    public int[] twoSum(int[] numbers, int target) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (numbers[i] + numbers[j] == target) {
+                    return new int[] {(j + 1), (i + 1)};
                 }
             }
         }
