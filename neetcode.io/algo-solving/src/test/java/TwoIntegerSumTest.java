@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-public class TwoIntergerSumTest {
+public class TwoIntegerSumTest {
     @Test
     public void testSumTwoInteger() {
         int[] numbers = {-5,-3,0,2,4,6,8};
